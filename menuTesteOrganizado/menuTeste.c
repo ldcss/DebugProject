@@ -1,13 +1,23 @@
 #include "raylib.h"
 
 void abrirGlossario(){
-    char mensagem[]="teste";
+    char mensagem[]="glossario de monstros e armas";
 
     BeginDrawing();
-        ClearBackground(RED);
-        DrawText(mensagem, 0 ,0 , 200, WHITE);
+        ClearBackground(DARKBROWN);
+        DrawText(mensagem, 290 ,20 , 75, WHITE);
     
         
+    EndDrawing();
+}
+
+void iniciarJogo(){
+    char titulo[]="jogo";
+
+    BeginDrawing();
+        ClearBackground(DARKGREEN);
+        DrawText(titulo, 700, 300, 200, WHITE);
+
     EndDrawing();
 }
 
@@ -62,6 +72,7 @@ void menuInicial(){
 
     //geral:
     int glossario=0;
+    int start=0;
 
     BeginDrawing();
         ClearBackground(BLACK);
@@ -97,6 +108,18 @@ void menuInicial(){
                 glossario=0;
             }
         }
+    }
+
+    if(mouseButaoStart && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)){
+        PlaySound(ratinho);
+        start=1;
+        while(start==1){
+            iniciarJogo();
+            if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+                start=0;
+            }
+        }
+
     }
     
     //CloseAudioDevice();
